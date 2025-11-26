@@ -31,9 +31,10 @@ const config: Config = {
     }
   },
   globals: {
-    
+
   },
   testEnvironment: "jsdom",
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts']
 };
 
 export default createJestConfig(config);
