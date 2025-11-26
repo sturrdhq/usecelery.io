@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Icons } from "@/components/icons";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { useRef } from "react";
 
 export function Hero() {
   const router = useRouter();
@@ -47,6 +48,8 @@ export function Hero() {
   const text = "Own your code. Design Visually. Deploy Anywhere.";
   const words = text.split(" ");
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
   return (
     <section className="flex flex-col items-center justify-center px-4 pt-8 pb-10 text-center md:pt-32">
       <div className="flex flex-1 align-center justify-between md:justify-center w-full">
@@ -54,7 +57,7 @@ export function Hero() {
           <Icons.logo className="h-10 w-10 md:h-20 md:w-20" />
           <span className="-ml-2 text-[20px] font-medium tracking-tight text-primary md:hidden">Celery</span>
         </div>
-        <Button size={'sm'} className="rounded-full md:hidden">
+        <Button size={'sm'} className="rounded-full md:hidden" onClick={() => inputRef.current?.focus()}>
           Join Waitlist
         </Button>
       </div>
@@ -86,6 +89,7 @@ export function Hero() {
       <form onSubmit={handleSubmit} className="mb-10 flex w-full max-w-sm flex-col items-center gap-2 sm:flex-row sm:gap-2">
         <Input
           type="email"
+          ref={inputRef}
           placeholder="Your email address"
           className="h-12 rounded-full bg-muted/50 px-6 text-base"
           required
