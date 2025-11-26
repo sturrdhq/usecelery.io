@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Icons } from "@/components/icons";
-import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
-import { useRef } from "react";
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Icons } from '@/components/icons';
+import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
+import { useRef } from 'react';
 
 export function Hero() {
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    router.push("/thanks");
+    router.push('/thanks');
   };
 
   const container = {
@@ -29,7 +29,7 @@ export function Hero() {
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
+        type: 'spring',
         damping: 12,
         stiffness: 100,
       } as const,
@@ -38,15 +38,15 @@ export function Hero() {
       opacity: 0,
       y: 20,
       transition: {
-        type: "spring",
+        type: 'spring',
         damping: 12,
         stiffness: 100,
       } as const,
     },
   };
 
-  const text = "Own your code. Design Visually. Deploy Anywhere.";
-  const words = text.split(" ");
+  const text = 'Own your code. Design Visually. Deploy Anywhere.';
+  const words = text.split(' ');
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -57,7 +57,7 @@ export function Hero() {
           <Icons.logo className="h-10 w-10 md:h-20 md:w-20" />
           <span className="-ml-2 text-[20px] font-medium tracking-tight text-primary md:hidden">Celery</span>
         </div>
-        <Button size={'sm'} className="rounded-full md:hidden" onClick={() => inputRef.current?.focus()}>
+        <Button size="sm" className="rounded-full md:hidden" onClick={() => inputRef.current?.focus()}>
           Join Waitlist
         </Button>
       </div>
@@ -70,13 +70,17 @@ export function Hero() {
       >
         {words.map((word, index) => (
           <motion.span variants={child} key={index} className="inline-block mr-[0.2em] last:mr-0">
-            {word === "Visually." || word === "Anywhere." ? (
-              <>
-                {word} <br className="hidden md:block" />
-              </>
-            ) : (
-              word
-            )}
+            {word === 'Visually.' || word === 'Anywhere.'
+              ? (
+                  <>
+                    {word}
+                    {' '}
+                    <br className="hidden md:block" />
+                  </>
+                )
+              : (
+                  word
+                )}
           </motion.span>
         ))}
       </motion.h1>
@@ -101,10 +105,13 @@ export function Hero() {
 
       <div className="flex items-center gap-4">
         <div className="flex -space-x-3">
-          {[1, 2, 3].map((i) => (
+          {[1, 2, 3].map(i => (
             <Avatar key={i} className="border-2 border-background">
               <AvatarImage src={`https://i.pravatar.cc/100?img=${i + 10}`} />
-              <AvatarFallback>U{i}</AvatarFallback>
+              <AvatarFallback>
+                U
+                {i}
+              </AvatarFallback>
             </Avatar>
           ))}
         </div>
