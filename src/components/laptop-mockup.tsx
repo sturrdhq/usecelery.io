@@ -1,3 +1,5 @@
+"use client";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { 
   MousePointer2, 
@@ -18,10 +20,17 @@ import {
   Image as ImageIcon,
   Settings
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function LaptopMockup() {
   return (
-    <div className="relative mx-auto mt-20 w-full max-w-5xl px-4">
+    <motion.div 
+      className="relative mx-auto mt-20 w-full max-w-5xl px-4"
+      initial={{ scale: 0.8, opacity: 0 }}
+      whileInView={{ scale: 1, opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true, margin: "-100px" }}
+    >
       {/* Laptop Frame */}
       <div className="relative z-10 mx-auto aspect-[16/10] w-full max-w-4xl overflow-hidden rounded-t-2xl border-[12px] border-b-0 border-gray-800 bg-gray-900 shadow-2xl md:rounded-t-3xl md:border-[16px]">
         
@@ -142,10 +151,14 @@ export function LaptopMockup() {
       {/* Glow Effect & Haze */}
       <div className="absolute -inset-4 -z-10 rounded-[3.5rem] bg-gradient-to-b from-green-500/20 to-blue-500/0 blur-3xl"></div>
       
-      {/* Animated Particles/Haze */}
-      <div className="absolute -top-20 -left-20 -z-20 h-64 w-64 animate-pulse rounded-full bg-green-400/20 blur-[100px]"></div>
-      <div className="absolute -bottom-20 -right-20 -z-20 h-64 w-64 animate-pulse rounded-full bg-blue-400/20 blur-[100px] delay-1000"></div>
-      <div className="absolute top-1/2 left-1/2 -z-20 h-96 w-96 -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-full bg-purple-400/10 blur-[120px] delay-500"></div>
-    </div>
+      {/* Animated Particles/Haze - Colorful Blobs */}
+      <div className="absolute -top-20 -left-20 -z-20 h-72 w-72 animate-pulse rounded-full bg-purple-500/30 blur-[80px]"></div>
+      <div className="absolute -bottom-20 -right-20 -z-20 h-72 w-72 animate-pulse rounded-full bg-blue-500/30 blur-[80px] delay-1000"></div>
+      <div className="absolute top-1/2 left-1/2 -z-20 h-96 w-96 -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-full bg-green-500/20 blur-[100px] delay-500"></div>
+      <div className="absolute top-0 right-0 -z-20 h-64 w-64 animate-pulse rounded-full bg-yellow-500/20 blur-[90px] delay-700"></div>
+
+      {/* Drop Shadow */}
+      <div className="absolute -bottom-12 left-1/2 h-12 w-[90%] -translate-x-1/2 rounded-[100%] bg-black/40 blur-xl"></div>
+    </motion.div>
   );
 }

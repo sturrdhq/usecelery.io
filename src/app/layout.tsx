@@ -15,8 +15,8 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Celery Clone",
-  description: "A clone of the Celery website",
+  title: "Celery - Own your code. Design Visually. Deploy Anywhere.",
+  description: "Celery is a visual development platform built around a marketplace of real React components and full-site templates.",
 };
 
 export default function RootLayout({

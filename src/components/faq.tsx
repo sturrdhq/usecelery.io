@@ -5,31 +5,106 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const faqs = [
+type FAQItem = {
+  question: string;
+  answer: React.ReactNode;
+};
+
+const faqs: FAQItem[] = [
   {
-    question: "What is Celery?",
-    answer:
-      "Celery is a component-driven visual development platform that bridges the gap between design speed and engineering quality. Users build complex sites by dragging and dropping functional (logic-based) and UI components. The platform then compiles the visual design into clean, standard MDX and React source code, ensuring users maintain 100% code ownership and freedom from vendor lock-in.",
+    question: "What exactly is Celery?",
+    answer: (
+      <div className="space-y-2">
+        <p>
+          Celery is a visual development platform backed by a marketplace of real React components and full-site templates.
+        </p>
+        <p>
+          You can buy components, drag them around visually, connect logic, and export clean React/Next.js code whenever you want. It&apos;s a builder that doesn’t try to trap you.
+        </p>
+      </div>
+    ),
   },
   {
-    question: "Can I bring my own React components?",
-    answer:
-      "Yes, you can import your own React components and use them within the Celery platform.",
+    question: "Who is Celery actually for?",
+    answer: (
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <strong>Developers who want to sell components</strong> and stop building the same thing 35 times.
+        </li>
+        <li>
+          <strong>Designers who want real components</strong> instead of whatever hacky &quot;widgets&quot; most builders force on them.
+        </li>
+        <li>
+          <strong>Business owners</strong> who want a polished site without paying agency prices or getting stuck in proprietary crap.
+        </li>
+      </ul>
+    ),
   },
   {
-    question: "Will I be locked into your platform?",
-    answer:
-      "No, Celery exports standard React code that you can host anywhere. You own your code.",
+    question: "How is this different from Framer, Webflow, or WordPress?",
+    answer: (
+      <div className="space-y-4">
+        <ul className="list-disc space-y-2 pl-5">
+          <li>
+            <strong>Framer</strong>: Great for visuals, weak for logic + messy code export.
+          </li>
+          <li>
+            <strong>Webflow</strong>: Power comes with complexity + lock-in.
+          </li>
+          <li>
+            <strong>WordPress</strong>: Old ecosystem, plugin hell, PHP, security headaches.
+          </li>
+        </ul>
+        <p>
+          <strong>Celery is React-native from day one.</strong> You can always export the code and leave. No platform jail.
+        </p>
+      </div>
+    ),
   },
   {
-    question: "How much will it cost?",
-    answer:
-      "We are currently in early access. Pricing will be announced soon.",
+    question: "Do I need to know React to use Celery?",
+    answer: (
+      <div className="space-y-2">
+        <p>No. You can drag pre-made components and templates like LEGO.</p>
+        <p>But if you <em>do</em> know React, everything is transparent—no mystery black box.</p>
+      </div>
+    ),
   },
   {
-    question: "How much will this cost?",
-    answer:
-      "Duplicate question for visual balance in the design.",
+    question: "Can I import my own components?",
+    answer: (
+      <p>
+        Yes. And unlike most platforms, Celery doesn’t butcher your code or wrap it in nonsense. Your component’s props become visual controls automatically.
+      </p>
+    ),
+  },
+  {
+    question: "Can I export the code and self-host?",
+    answer: (
+      <div className="space-y-2">
+        <p>Yes. That&apos;s the entire point.</p>
+        <p>
+          You can export a clean React/Next.js project and deploy it anywhere: Vercel, Netlify, AWS, your cousin’s Raspberry Pi—whatever.
+        </p>
+      </div>
+    ),
+  },
+  {
+    question: "What can I build with Celery?",
+    answer: (
+      <div className="space-y-2">
+        <p>Anything React-based:</p>
+        <ul className="list-disc space-y-1 pl-5">
+          <li>Marketing sites</li>
+          <li>Landing pages</li>
+          <li>Dashboards</li>
+          <li>SaaS frontends</li>
+          <li>E-commerce fronts</li>
+          <li>Custom UI kits</li>
+        </ul>
+        <p>If it&apos;s React, it fits.</p>
+      </div>
+    ),
   },
 ];
 
@@ -51,11 +126,11 @@ export function FAQ() {
             value={`item-${index}`}
             className="rounded-2xl bg-[#F3F4F6] px-6 border-none"
           >
-            <AccordionTrigger className="text-lg font-medium text-gray-900 hover:no-underline">
+            <AccordionTrigger className="text-lg font-medium text-gray-900 hover:no-underline text-left">
               {faq.question}
             </AccordionTrigger>
             <AccordionContent className="text-base text-gray-600">
-              {faq.answer}
+              <div className="text-base text-gray-600">{faq.answer}</div>
             </AccordionContent>
           </AccordionItem>
         ))}

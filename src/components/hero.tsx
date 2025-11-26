@@ -48,14 +48,19 @@ export function Hero() {
   const words = text.split(" ");
 
   return (
-    <section className="flex flex-col items-center justify-center px-4 pt-20 pb-10 text-center md:pt-32">
-      <div className="mb-8 flex items-center gap-3">
-        <Icons.logo className="h-12 w-12" />
-        <span className="font-serif text-3xl font-medium tracking-tight text-primary">Celery</span>
+    <section className="flex flex-col items-center justify-center px-4 pt-8 pb-10 text-center md:pt-32">
+      <div className="flex flex-1 align-center justify-between md:justify-center w-full">
+        <div className="mb-8 flex items-center gap-1">
+          <Icons.logo className="h-10 w-10 md:h-20 md:w-20" />
+          <span className="-ml-2 text-[20px] font-medium tracking-tight text-primary md:hidden">Celery</span>
+        </div>
+        <Button size={'sm'} className="rounded-full md:hidden">
+          Join Waitlist
+        </Button>
       </div>
-      
-      <motion.h1 
-        className="mb-6 max-w-5xl font-serif text-5xl font-normal leading-tight tracking-tight text-primary md:text-7xl lg:text-8xl"
+
+      <motion.h1
+        className="mb-6 max-w-5xl font-serif text-5xl font-normal leading-tight tracking-tight text-primary md:text-7xl lg:text-8xl mt-8 md:mt-0"
         variants={container}
         initial="hidden"
         animate="visible"
@@ -63,11 +68,11 @@ export function Hero() {
         {words.map((word, index) => (
           <motion.span variants={child} key={index} className="inline-block mr-[0.2em] last:mr-0">
             {word === "Visually." || word === "Anywhere." ? (
-               <>
-                 {word} <br className="hidden md:block" />
-               </>
+              <>
+                {word} <br className="hidden md:block" />
+              </>
             ) : (
-               word
+              word
             )}
           </motion.span>
         ))}
@@ -85,7 +90,7 @@ export function Hero() {
           className="h-12 rounded-full bg-muted/50 px-6 text-base"
           required
         />
-        <Button size="lg" className="h-12 rounded-full px-8 text-base">
+        <Button size="lg" className="h-12 rounded-full px-8 text-base w-full md:w-auto">
           Join waitlist
         </Button>
       </form>
