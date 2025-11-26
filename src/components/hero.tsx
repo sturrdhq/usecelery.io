@@ -76,15 +76,15 @@ export function Hero() {
           <motion.span variants={child} key={index} className="inline-block mr-[0.2em] last:mr-0">
             {word === 'Visually.' || word === 'Anywhere.'
               ? (
-                <>
-                  {word}
-                  {' '}
-                  <br className="hidden md:block" />
-                </>
-              )
+                  <>
+                    {word}
+                    {' '}
+                    <br className="hidden md:block" />
+                  </>
+                )
               : (
-                word
-              )}
+                  word
+                )}
           </motion.span>
         ))}
       </motion.h1>
