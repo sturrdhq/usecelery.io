@@ -6,13 +6,17 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Icons } from '@/components/icons';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import posthog from 'posthog-js';
+import { createOnChangeHandler } from '@/lib/utils';
 
 export function Hero() {
   const router = useRouter();
+  const [email, setEmail] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    posthog.capture('new waitlist signup', { email });
     router.push('/thanks');
   };
 
@@ -72,15 +76,15 @@ export function Hero() {
           <motion.span variants={child} key={index} className="inline-block mr-[0.2em] last:mr-0">
             {word === 'Visually.' || word === 'Anywhere.'
               ? (
-                  <>
-                    {word}
-                    {' '}
-                    <br className="hidden md:block" />
-                  </>
-                )
+                <>
+                  {word}
+                  {' '}
+                  <br className="hidden md:block" />
+                </>
+              )
               : (
-                  word
-                )}
+                word
+              )}
           </motion.span>
         ))}
       </motion.h1>
@@ -93,6 +97,8 @@ export function Hero() {
       <form onSubmit={handleSubmit} className="mb-10 flex w-full max-w-sm flex-col items-center gap-2 sm:flex-row sm:gap-2">
         <Input
           type="email"
+          value={email}
+          onChange={createOnChangeHandler(setEmail)}
           ref={inputRef}
           placeholder="Your email address"
           className="h-12 rounded-full bg-muted/50 px-6 text-base"
