@@ -1,9 +1,10 @@
+import React from 'react';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from '@/components/ui/accordion';
 
 type FAQItem = {
   question: string;
@@ -12,7 +13,7 @@ type FAQItem = {
 
 const faqs: FAQItem[] = [
   {
-    question: "What exactly is Celery?",
+    question: 'What exactly is Celery?',
     answer: (
       <div className="space-y-2">
         <p>
@@ -25,53 +26,69 @@ const faqs: FAQItem[] = [
     ),
   },
   {
-    question: "Who is Celery actually for?",
+    question: 'Who is Celery actually for?',
     answer: (
       <ul className="list-disc space-y-2 pl-5">
         <li>
-          <strong>Developers who want to sell components</strong> and stop building the same thing 35 times.
+          <strong>Developers who want to sell components</strong>
+          {' '}
+          and stop building the same thing 35 times.
         </li>
         <li>
-          <strong>Designers who want real components</strong> instead of whatever hacky &quot;widgets&quot; most builders force on them.
+          <strong>Designers who want real components</strong>
+          {' '}
+          instead of whatever hacky &quot;widgets&quot; most builders force on them.
         </li>
         <li>
-          <strong>Business owners</strong> who want a polished site without paying agency prices or getting stuck in proprietary crap.
+          <strong>Business owners</strong>
+          {' '}
+          who want a polished site without paying agency prices or getting stuck in proprietary crap.
         </li>
       </ul>
     ),
   },
   {
-    question: "How is this different from Framer, Webflow, or WordPress?",
+    question: 'How is this different from Framer, Webflow, or WordPress?',
     answer: (
       <div className="space-y-4">
         <ul className="list-disc space-y-2 pl-5">
           <li>
-            <strong>Framer</strong>: Great for visuals, weak for logic + messy code export.
+            <strong>Framer</strong>
+            : Great for visuals, weak for logic + messy code export.
           </li>
           <li>
-            <strong>Webflow</strong>: Power comes with complexity + lock-in.
+            <strong>Webflow</strong>
+            : Power comes with complexity + lock-in.
           </li>
           <li>
-            <strong>WordPress</strong>: Old ecosystem, plugin hell, PHP, security headaches.
+            <strong>WordPress</strong>
+            : Old ecosystem, plugin hell, PHP, security headaches.
           </li>
         </ul>
         <p>
-          <strong>Celery is React-native from day one.</strong> You can always export the code and leave. No platform jail.
+          <strong>Celery is React-native from day one.</strong>
+          {' '}
+          You can always export the code and leave. No platform jail.
         </p>
       </div>
     ),
   },
   {
-    question: "Do I need to know React to use Celery?",
+    question: 'Do I need to know React to use Celery?',
     answer: (
       <div className="space-y-2">
         <p>No. You can drag pre-made components and templates like LEGO.</p>
-        <p>But if you <em>do</em> know React, everything is transparent—no mystery black box.</p>
+        <p>
+          But if you
+          <em>do</em>
+          {' '}
+          know React, everything is transparent—no mystery black box.
+        </p>
       </div>
     ),
   },
   {
-    question: "Can I import my own components?",
+    question: 'Can I import my own components?',
     answer: (
       <p>
         Yes. And unlike most platforms, Celery doesn’t butcher your code or wrap it in nonsense. Your component’s props become visual controls automatically.
@@ -79,7 +96,7 @@ const faqs: FAQItem[] = [
     ),
   },
   {
-    question: "Can I export the code and self-host?",
+    question: 'Can I export the code and self-host?',
     answer: (
       <div className="space-y-2">
         <p>Yes. That&apos;s the entire point.</p>
@@ -90,7 +107,7 @@ const faqs: FAQItem[] = [
     ),
   },
   {
-    question: "What can I build with Celery?",
+    question: 'What can I build with Celery?',
     answer: (
       <div className="space-y-2">
         <p>Anything React-based:</p>
@@ -112,10 +129,16 @@ export function FAQ() {
   return (
     <section className="mx-auto max-w-2xl px-4 py-20">
       <h2 className="mb-4 text-center font-serif text-4xl text-gray-900 md:text-5xl">
-        Frequently asked <br /> questions
+        Frequently asked
+        {' '}
+        <br />
+        {' '}
+        questions
       </h2>
       <p className="mb-12 text-center text-muted-foreground">
-        Everything you need to know about the Soonix template. Find <br className="hidden md:block" />
+        Everything you need to know about the Soonix template. Find
+        {' '}
+        <br className="hidden md:block" />
         answers to the most common questions below.
       </p>
 
