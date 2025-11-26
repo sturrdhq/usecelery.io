@@ -1,9 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, Circle, MoreHorizontal, Search, User } from "lucide-react";
-
-// I'll need a Badge component, let me create a simple one inline or add it later.
-// For now I'll use a simple span with classes.
+import { CheckCircle2, Circle, Search, User } from "lucide-react";
 
 export function PhoneMockup() {
   return (
