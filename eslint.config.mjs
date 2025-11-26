@@ -16,7 +16,11 @@ const eslintConfig = defineConfig([
   ]),
   {
     rules: {
-      'no-unused-vars': 'error',
+      'no-unused-vars': ['error', {
+        args: 'after-used',
+        argsIgnorePattern: '^_',
+        ignoreRestSiblings: true,
+      }],
       'no-undef': 'error',
       'no-useless-assignment': 'error',
       'camelcase': 'warn',
