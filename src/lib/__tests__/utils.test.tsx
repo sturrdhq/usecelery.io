@@ -1,4 +1,4 @@
-import { cn } from '../utils';
+import { cn, createOnChangeHandler } from '../utils';
 import { render, screen } from '@testing-library/react';
 
 describe('test utils', () => {
@@ -17,5 +17,13 @@ describe('test utils', () => {
     expect(button).toBeInTheDocument();
     expect(button).toHaveTextContent('hello');
     expect(button).toHaveClass('text-white bg-blue-500');
+  });
+
+  test('createOnChangeHandler calls onChange with value', () => {
+    const onChange = jest.fn();
+    const handler = createOnChangeHandler(onChange);
+    const event = { target: { value: 'test' } } as React.ChangeEvent<HTMLInputElement>;
+    handler(event);
+    expect(onChange).toHaveBeenCalledWith('test');
   });
 });

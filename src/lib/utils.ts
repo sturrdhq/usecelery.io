@@ -11,4 +11,4 @@ export function createOnChangeHandler(onChange: OnChangeValue) {
   return (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.value);
   };
-}
+};
