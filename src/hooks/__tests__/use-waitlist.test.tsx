@@ -36,7 +36,11 @@ describe('useWaitlist', () => {
     });
     
     act(() => {
-      result.current.onChangeEmail({ target: { value: 'test@example.com' } } as React.ChangeEvent<HTMLInputElement>);
+      result.current.onChangeEmail({
+        target: {
+          value: 'test@example.com',
+        },
+      } as React.ChangeEvent<HTMLInputElement>);
     });
     
     expect(result.current.email).toBe('test@example.com');
