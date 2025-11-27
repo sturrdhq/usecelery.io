@@ -27,7 +27,8 @@ export function useWaitlist() {
   const subscribe = async () => {
     try {
       return await mutateAsync();
-    } catch {
+    }
+    catch {
       return { error: 'Network error', message: 'Failed to subscribe' };
     }
   };
