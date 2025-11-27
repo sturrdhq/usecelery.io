@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Icons } from '@/components/icons';
 import { useRouter } from 'next/navigation';
-import { motion } from 'framer-motion';
+
 import { useRef } from 'react';
 import posthog from 'posthog-js';
 import { useWaitlist } from '@/hooks/use-waitlist';
@@ -25,35 +25,6 @@ export function Hero() {
     }
   };
 
-  const container = {
-    hidden: { opacity: 0 },
-    visible: (i = 1) => ({
-      opacity: 1,
-      transition: { staggerChildren: 0.12, delayChildren: 0.04 * i },
-    }),
-  };
-
-  const child = {
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: 'spring',
-        damping: 12,
-        stiffness: 100,
-      } as const,
-    },
-    hidden: {
-      opacity: 0,
-      y: 20,
-      transition: {
-        type: 'spring',
-        damping: 12,
-        stiffness: 100,
-      } as const,
-    },
-  };
-
   const text = 'Own your code. Design Visually. Deploy Anywhere.';
   const words = text.split(' ');
 
@@ -71,54 +42,41 @@ export function Hero() {
         </Button>
       </div>
 
-      <motion.div
-        className="flex flex-col items-center w-full"
-        variants={{
-          hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: {
-              staggerChildren: 0.2,
-              delayChildren: 0.2,
-            },
-          },
-        }}
-        initial="hidden"
-        animate="visible"
-      >
-        <motion.h1
-          className="mb-6 max-w-5xl font-serif text-5xl font-normal leading-tight tracking-tight text-primary md:text-7xl lg:text-8xl mt-8 md:mt-0"
-          variants={container}
-        >
+      <div className="flex flex-col items-center w-full">
+        <h1 className="mb-6 max-w-5xl font-serif text-5xl font-normal leading-tight tracking-tight text-primary md:text-7xl lg:text-8xl mt-8 md:mt-0">
           {words.map((word, index) => (
-            <motion.span variants={child} key={index} className="inline-block mr-[0.2em] last:mr-0">
+            <span
+              key={index}
+              className="inline-block mr-[0.2em] last:mr-0 opacity-0 animate-fade-in-up"
+              style={{ animationDelay: `${index * 0.05}s` }}
+            >
               {word === 'Visually.' || word === 'Anywhere.'
                 ? (
-                    <>
-                      {word}
-                      {' '}
-                      <br className="hidden md:block" />
-                    </>
-                  )
+                  <>
+                    {word}
+                    {' '}
+                    <br className="hidden md:block" />
+                  </>
+                )
                 : (
-                    word
-                  )}
-            </motion.span>
+                  word
+                )}
+            </span>
           ))}
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          className="mb-10 max-w-xl text-lg text-muted-foreground md:text-xl"
-          variants={child}
+        <p
+          className="mb-10 max-w-xl text-lg text-muted-foreground md:text-xl opacity-0 animate-fade-in-up"
+          style={{ animationDelay: `${words.length * 0.05 + 0.1}s` }}
         >
           We&apos;re getting close. Sign up to get early access to Celery and start
           building your viral waitlist.
-        </motion.p>
+        </p>
 
-        <motion.form
+        <form
           onSubmit={handleSubmit}
-          className="mb-10 flex w-full max-w-sm flex-col items-center gap-2 sm:flex-row sm:gap-2"
-          variants={child}
+          className="mb-10 flex w-full max-w-sm flex-col items-center gap-2 sm:flex-row sm:gap-2 opacity-0 animate-fade-in-up"
+          style={{ animationDelay: `${words.length * 0.05 + 0.2}s` }}
         >
           <Input
             type="email"
@@ -132,11 +90,11 @@ export function Hero() {
           <Button loading={isLoading} size="lg" className="h-12 rounded-full px-8 text-base w-full md:w-auto">
             Join waitlist
           </Button>
-        </motion.form>
+        </form>
 
-        <motion.div
-          className="flex items-center gap-4"
-          variants={child}
+        <div
+          className="flex items-center gap-4 opacity-0 animate-fade-in-up"
+          style={{ animationDelay: `${words.length * 0.05 + 0.3}s` }}
         >
           <div className="flex -space-x-3">
             {[1, 2, 3].map(i => (
@@ -152,8 +110,8 @@ export function Hero() {
           <div className="text-sm text-muted-foreground">
             Join +5,000 others on the waitlist
           </div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 }
