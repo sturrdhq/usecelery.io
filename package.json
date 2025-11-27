@@ -22,6 +22,7 @@
     "posthog-js": "^1.298.1",
     "react": "19.2.0",
     "react-dom": "19.2.0",
+    "react-query": "^3.39.3",
     "tailwind-merge": "^3.4.0",
     "tailwindcss-animate": "^1.0.7"
   },

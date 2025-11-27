@@ -6,18 +6,23 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Icons } from '@/components/icons';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import posthog from 'posthog-js';
-import { createOnChangeHandler } from '@/lib/utils';
+import { useWaitlist } from '@/hooks/use-waitlist';
 
 export function Hero() {
   const router = useRouter();
-  const [email, setEmail] = useState('');
+  const { email, onChangeEmail, isLoading, subscribe } = useWaitlist();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     posthog.capture('new waitlist signup', { email });
-    router.push('/thanks');
+
+    const res = await subscribe();
+
+    if (!res.error) {
+      router.push('/thanks');
+    }
   };
 
   const container = {
@@ -61,7 +66,7 @@ export function Hero() {
           <Icons.logo className="h-10 w-10 md:h-20 md:w-20" />
           <span className="-ml-2 text-[20px] font-medium tracking-tight text-primary md:hidden">Celery</span>
         </div>
-        <Button size="sm" className="rounded-full md:hidden" onClick={() => inputRef.current?.focus()}>
+        <Button loading={isLoading} size="sm" className="rounded-full md:hidden" onClick={() => inputRef.current?.focus()}>
           Join Waitlist
         </Button>
       </div>
@@ -98,7 +103,7 @@ export function Hero() {
         <Input
           type="email"
           value={email}
-          onChange={createOnChangeHandler(setEmail)}
+          onChange={onChangeEmail}
           ref={inputRef}
           placeholder="Your email address"
           className="h-12 rounded-full bg-muted/50 px-6 text-base"

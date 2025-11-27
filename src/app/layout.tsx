@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Inter, Instrument_Serif as InstrumentSerif } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
+import { Providers } from '@/providers';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -34,7 +35,9 @@ export default function RootLayout({
           instrumentSerif.variable,
         )}
       >
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );
