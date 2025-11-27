@@ -68,11 +68,8 @@ describe('useWaitlist', () => {
 
     await act(async () => {
       const res = await result.current.subscribe();
-      console.log(res, result.current);
       expect(res.error).toBe('Network error');
     });
-
-    console.log(result.current);
 
     expect(result.current.isSuccess).toBe(false);
   });
