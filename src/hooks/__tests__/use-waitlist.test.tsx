@@ -13,28 +13,28 @@ const createWrapper = () => {
       },
     },
   });
-  
+
   const Wrapper = ({ children }: { children: React.ReactNode }) => (
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );
-  
+
   return Wrapper;
 };
 
 describe('useWaitlist', () => {
   it('initializes with empty email', () => {
-    const { result } = renderHook(() => useWaitlist(), { 
-      wrapper: createWrapper() 
+    const { result } = renderHook(() => useWaitlist(), {
+      wrapper: createWrapper(),
     });
-    
+
     expect(result.current.email).toBe('');
   });
 
   it('updates email', () => {
-    const { result } = renderHook(() => useWaitlist(), { 
-      wrapper: createWrapper() 
+    const { result } = renderHook(() => useWaitlist(), {
+      wrapper: createWrapper(),
     });
-    
+
     act(() => {
       result.current.onChangeEmail({
         target: {
@@ -42,7 +42,7 @@ describe('useWaitlist', () => {
         },
       } as React.ChangeEvent<HTMLInputElement>);
     });
-    
+
     expect(result.current.email).toBe('test@example.com');
   });
 
