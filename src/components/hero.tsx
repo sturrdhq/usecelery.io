@@ -71,65 +71,89 @@ export function Hero() {
         </Button>
       </div>
 
-      <motion.h1
-        className="mb-6 max-w-5xl font-serif text-5xl font-normal leading-tight tracking-tight text-primary md:text-7xl lg:text-8xl mt-8 md:mt-0"
-        variants={container}
+      <motion.div
+        className="flex flex-col items-center w-full"
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.2,
+              delayChildren: 0.2,
+            },
+          },
+        }}
         initial="hidden"
         animate="visible"
       >
-        {words.map((word, index) => (
-          <motion.span variants={child} key={index} className="inline-block mr-[0.2em] last:mr-0">
-            {word === 'Visually.' || word === 'Anywhere.'
-              ? (
+        <motion.h1
+          className="mb-6 max-w-5xl font-serif text-5xl font-normal leading-tight tracking-tight text-primary md:text-7xl lg:text-8xl mt-8 md:mt-0"
+          variants={container}
+        >
+          {words.map((word, index) => (
+            <motion.span variants={child} key={index} className="inline-block mr-[0.2em] last:mr-0">
+              {word === 'Visually.' || word === 'Anywhere.'
+                ? (
                   <>
                     {word}
                     {' '}
                     <br className="hidden md:block" />
                   </>
                 )
-              : (
+                : (
                   word
                 )}
-          </motion.span>
-        ))}
-      </motion.h1>
-
-      <p className="mb-10 max-w-xl text-lg text-muted-foreground md:text-xl">
-        We&apos;re getting close. Sign up to get early access to Celery and start
-        building your viral waitlist.
-      </p>
-
-      <form onSubmit={handleSubmit} className="mb-10 flex w-full max-w-sm flex-col items-center gap-2 sm:flex-row sm:gap-2">
-        <Input
-          type="email"
-          value={email}
-          onChange={onChangeEmail}
-          ref={inputRef}
-          placeholder="Your email address"
-          className="h-12 rounded-full bg-muted/50 px-6 text-base"
-          required
-        />
-        <Button loading={isLoading} size="lg" className="h-12 rounded-full px-8 text-base w-full md:w-auto">
-          Join waitlist
-        </Button>
-      </form>
-
-      <div className="flex items-center gap-4">
-        <div className="flex -space-x-3">
-          {[1, 2, 3].map(i => (
-            <Avatar key={i} className="border-2 border-background">
-              <AvatarImage src={`https://i.pravatar.cc/100?img=${i + 10}`} />
-              <AvatarFallback>
-                U
-                {i}
-              </AvatarFallback>
-            </Avatar>
+            </motion.span>
           ))}
-        </div>
-        <div className="text-sm text-muted-foreground">
-          Join +5,000 others on the waitlist
-        </div>
-      </div>
+        </motion.h1>
+
+        <motion.p
+          className="mb-10 max-w-xl text-lg text-muted-foreground md:text-xl"
+          variants={child}
+        >
+          We&apos;re getting close. Sign up to get early access to Celery and start
+          building your viral waitlist.
+        </motion.p>
+
+        <motion.form
+          onSubmit={handleSubmit}
+          className="mb-10 flex w-full max-w-sm flex-col items-center gap-2 sm:flex-row sm:gap-2"
+          variants={child}
+        >
+          <Input
+            type="email"
+            value={email}
+            onChange={onChangeEmail}
+            ref={inputRef}
+            placeholder="Your email address"
+            className="h-12 rounded-full bg-muted/50 px-6 text-base"
+            required
+          />
+          <Button loading={isLoading} size="lg" className="h-12 rounded-full px-8 text-base w-full md:w-auto">
+            Join waitlist
+          </Button>
+        </motion.form>
+
+        <motion.div
+          className="flex items-center gap-4"
+          variants={child}
+        >
+          <div className="flex -space-x-3">
+            {[1, 2, 3].map(i => (
+              <Avatar key={i} className="border-2 border-background">
+                <AvatarImage src={`https://i.pravatar.cc/100?img=${i + 10}`} />
+                <AvatarFallback>
+                  U
+                  {i}
+                </AvatarFallback>
+              </Avatar>
+            ))}
+          </div>
+          <div className="text-sm text-muted-foreground">
+            Join +5,000 others on the waitlist
+          </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

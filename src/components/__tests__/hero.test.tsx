@@ -25,6 +25,13 @@ describe('Hero Component', () => {
       onChangeEmail: mockOnChangeEmail,
       isLoading: false,
       subscribe: mockSubscribe,
+      motion: {
+        h1: ({ children, ...props }: React.ComponentProps<'h1'>) => <h1 {...props}>{children}</h1>,
+        span: ({ children, ...props }: React.ComponentProps<'span'>) => <span {...props}>{children}</span>,
+        div: ({ children, ...props }: React.ComponentProps<'div'>) => <div {...props}>{children}</div>,
+        p: ({ children, ...props }: React.ComponentProps<'p'>) => <p {...props}>{children}</p>,
+        form: ({ children, ...props }: React.ComponentProps<'form'>) => <form {...props}>{children}</form>,
+      },
     });
   });
 
