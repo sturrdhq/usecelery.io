@@ -66,7 +66,7 @@ export function Hero() {
           <Icons.logo className="h-10 w-10 md:h-20 md:w-20" />
           <span className="-ml-2 text-[20px] font-medium tracking-tight text-primary md:hidden">Celery</span>
         </div>
-        <Button size="sm" className="rounded-full md:hidden" onClick={() => inputRef.current?.focus()}>
+        <Button loading={isLoading} size="sm" className="rounded-full md:hidden" onClick={() => inputRef.current?.focus()}>
           Join Waitlist
         </Button>
       </div>
