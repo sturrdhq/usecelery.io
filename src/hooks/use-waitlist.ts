@@ -9,7 +9,7 @@ export function useWaitlist() {
   const onChangeEmail = createOnChangeHandler(setEmail);
 
   const subscribeToWaitListApi = useCallback(async () => {
-    const res = await fetch(`${BASE_URL}/waitlist/subscribe?email${email}`, {
+    const res = await fetch(`${BASE_URL}/waitlist/subscribe?email=${email}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
