@@ -52,15 +52,15 @@ export function Hero() {
             >
               {word === 'Visually.' || word === 'Anywhere.'
                 ? (
-                  <>
-                    {word}
-                    {' '}
-                    <br className="hidden md:block" />
-                  </>
-                )
+                    <>
+                      {word}
+                      {' '}
+                      <br className="hidden md:block" />
+                    </>
+                  )
                 : (
-                  word
-                )}
+                    word
+                  )}
             </span>
           ))}
         </h1>
