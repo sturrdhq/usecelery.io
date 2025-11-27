@@ -62,7 +62,7 @@ describe('useWaitlist', () => {
     });
 
     expect(global.fetch).toHaveBeenCalledWith(
-      `${BASE_URL}/waitlist/subscribe?emailtest@example.com`,
+      `${BASE_URL}/waitlist/subscribe?email=test@example.com`,
       expect.objectContaining({
         method: 'POST',
       }),
