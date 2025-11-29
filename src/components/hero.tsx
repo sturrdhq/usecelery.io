@@ -25,7 +25,7 @@ export function Hero() {
     }
   };
 
-  const text = 'Build High-Performance Landing Pages Visually. Export Next.js Code. Host Anywhere.';
+  const text = 'Create Landing Pages. Export Next.js Code. Host Anywhere.';
   const words = text.split(' ');
 
   const inputRef = useRef<HTMLInputElement>(null);
